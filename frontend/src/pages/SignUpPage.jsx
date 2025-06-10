@@ -49,7 +49,11 @@ const SignUpPage = () => {
           {/* ERROR MESSAGE IF ANY */}
           {error && (
             <div className="alert alert-error mb-4">
-              <span>{error.response.data.message}</span>
+              <span>
+                {error.response?.data?.message || // Safely access error message
+                  error.message || // Fallback to general error message
+                  "An unexpected error occurred. Please try again."}
+              </span>
             </div>
           )}
 
